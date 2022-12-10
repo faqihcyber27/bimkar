@@ -15,8 +15,11 @@ $session = session();
                         +65 11.188.888
                     </div>
                 </div>
-                <div class="ht-right"> 
-                    <a href="<?= site_url('login') ?>" class="login-panel"><i class="fa fa-user"></i>Login</a>
+                <div class="ht-right"><?php if($session->get('isLoggedIn')): ?>
+                <a href="<?= site_url('logout') ?>" class="login-panel"><i class="fa fa-user"></i>Logout ( <?= $session->get('username')?> )</a>
+                <?php else: ?>
+                <a href="<?= site_url('login') ?>" class="login-panel"><i class="fa fa-user"></i>Login</a>
+                <?php endif ?>
                     <div class="lan-selector">
                         <select class="language_drop" name="countries" id="countries" style="width:300px;">
                             <option value='yt' data-image="<?= base_url('fashi-master/img/flag-1.jpg') ?>" data-imagecss="flag yt"
@@ -65,7 +68,7 @@ $session = session();
                         <li class="active"><a href="<?= site_url('/') ?>">Home</a></li>
                         <li><a href="<?= site_url('shop') ?>">Shop</a></li>  
                         <li><a href="<?= site_url('contact') ?>">Contact</a></li>  
-                        <?php if($session->get('isLoggedIn')): ?> 
+                        <?php if($session->get('isLoggedIn')): ?>
                         <li><a href="<?= site_url('transaction') ?>">Transaction</a></li>
                         <?php endif ?>
                     </ul>
